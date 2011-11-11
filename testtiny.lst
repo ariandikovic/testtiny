@@ -1,0 +1,1708 @@
+   1               		.file	"testtiny.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	usartHEXmyoutput
+  18               	usartHEXmyoutput:
+  19               	.LFB9:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 982F      		mov r25,r24
+  26               	.LVL1:
+  27 0002 9F70      		andi r25,lo8(15)
+  28               	.LM3:
+  29 0004 8295      		swap r24
+  30               	.LVL2:
+  31 0006 8F70      		andi r24,lo8(15)
+  32               	.LM4:
+  33 0008 8A30      		cpi r24,lo8(10)
+  34 000a 00F4      		brsh .L2
+  35               	.LM5:
+  36 000c 282F      		mov r18,r24
+  37 000e 205D      		subi r18,lo8(-(48))
+  38               	.LVL3:
+  39 0010 00C0      		rjmp .L3
+  40               	.LVL4:
+  41               	.L2:
+  42               	.LM6:
+  43 0012 282F      		mov r18,r24
+  44 0014 295C      		subi r18,lo8(-(55))
+  45               	.LVL5:
+  46               	.L3:
+  47               	.LM7:
+  48 0016 9A30      		cpi r25,lo8(10)
+  49 0018 00F4      		brsh .L4
+  50               	.LM8:
+  51 001a 892F      		mov r24,r25
+  52 001c 805D      		subi r24,lo8(-(48))
+  53               	.LVL6:
+  54 001e 00C0      		rjmp .L8
+  55               	.LVL7:
+  56               	.L4:
+  57               	.LM9:
+  58 0020 892F      		mov r24,r25
+  59 0022 895C      		subi r24,lo8(-(55))
+  60               	.LVL8:
+  61               	.L8:
+  62               	.LM10:
+  63 0024 5D9B      		sbis 43-32,5
+  64 0026 00C0      		rjmp .L8
+  65               	.LM11:
+  66 0028 2CB9      		out 44-32,r18
+  67               	.L6:
+  68               	.LM12:
+  69 002a 5D9B      		sbis 43-32,5
+  70 002c 00C0      		rjmp .L6
+  71               	.LM13:
+  72 002e 8CB9      		out 44-32,r24
+  73               	/* epilogue start */
+  74               	.LM14:
+  75 0030 0895      		ret
+  76               	.LFE9:
+  78               	.global	usartPutchar
+  80               	usartPutchar:
+  81               	.LFB10:
+  82               	.LM15:
+  83               	/* prologue: function */
+  84               	/* frame size = 0 */
+  85               	.LVL9:
+  86               	.L12:
+  87               	.LM16:
+  88 0032 5D9B      		sbis 43-32,5
+  89 0034 00C0      		rjmp .L12
+  90               	.LM17:
+  91 0036 8CB9      		out 44-32,r24
+  92               	/* epilogue start */
+  93               	.LM18:
+  94 0038 0895      		ret
+  95               	.LFE10:
+  97               	.global	usartPutCRLF
+  99               	usartPutCRLF:
+ 100               	.LFB11:
+ 101               	.LM19:
+ 102               	/* prologue: function */
+ 103               	/* frame size = 0 */
+ 104               	.L16:
+ 105               	.LM20:
+ 106 003a 5D9B      		sbis 43-32,5
+ 107 003c 00C0      		rjmp .L16
+ 108               	.LM21:
+ 109 003e 8DE0      		ldi r24,lo8(13)
+ 110 0040 8CB9      		out 44-32,r24
+ 111               	.L17:
+ 112               	.LM22:
+ 113 0042 5D9B      		sbis 43-32,5
+ 114 0044 00C0      		rjmp .L17
+ 115               	.LM23:
+ 116 0046 8AE0      		ldi r24,lo8(10)
+ 117 0048 8CB9      		out 44-32,r24
+ 118               	/* epilogue start */
+ 119               	.LM24:
+ 120 004a 0895      		ret
+ 121               	.LFE11:
+ 123               	.global	usartSendstring
+ 125               	usartSendstring:
+ 126               	.LFB12:
+ 127               	.LM25:
+ 128               	.LVL10:
+ 129               	/* prologue: function */
+ 130               	/* frame size = 0 */
+ 131               	.LM26:
+ 132 004c 20E0      		ldi r18,lo8(0)
+ 133               	.LVL11:
+ 134 004e 00C0      		rjmp .L22
+ 135               	.L25:
+ 136               	.LM27:
+ 137 0050 5D9B      		sbis 43-32,5
+ 138 0052 00C0      		rjmp .L25
+ 139               	.LM28:
+ 140 0054 ECB9      		out 44-32,r30
+ 141               	.LM29:
+ 142 0056 2F5F      		subi r18,lo8(-(1))
+ 143               	.L22:
+ 144 0058 FC01      		movw r30,r24
+ 145 005a E20F      		add r30,r18
+ 146 005c F11D      		adc r31,__zero_reg__
+ 147 005e E081      		ld r30,Z
+ 148 0060 EE23      		tst r30
+ 149 0062 01F4      		brne .L25
+ 150               	/* epilogue start */
+ 151               	.LM30:
+ 152 0064 0895      		ret
+ 153               	.LFE12:
+ 155               	.global	getDIPvalue
+ 157               	getDIPvalue:
+ 158               	.LFB13:
+ 159               	.LM31:
+ 160               	/* prologue: function */
+ 161               	/* frame size = 0 */
+ 162               	.LM32:
+ 163 0066 80B3      		in r24,48-32
+ 164               	.LVL12:
+ 165               	.LM33:
+ 166 0068 880F      		lsl r24
+ 167               	.LM34:
+ 168 006a 90B3      		in r25,48-32
+ 169               	.LVL13:
+ 170               	.LM35:
+ 171 006c 9295      		swap r25
+ 172 006e 907F      		andi r25,lo8(-16)
+ 173               	.LM36:
+ 174 0070 26B3      		in r18,54-32
+ 175               	.LVL14:
+ 176               	.LM37:
+ 177 0072 807C      		andi r24,lo8(-64)
+ 178               	.LVL15:
+ 179 0074 9073      		andi r25,lo8(48)
+ 180               	.LVL16:
+ 181 0076 892B      		or r24,r25
+ 182               	.LVL17:
+ 183               	.LM38:
+ 184 0078 2F70      		andi r18,lo8(15)
+ 185               	.LVL18:
+ 186 007a 822B      		or r24,r18
+ 187               	.LVL19:
+ 188               	.LM39:
+ 189 007c 8095      		com r24
+ 190               	.LVL20:
+ 191               	/* epilogue start */
+ 192 007e 0895      		ret
+ 193               	.LFE13:
+ 195               	.global	spiWrite
+ 197               	spiWrite:
+ 198               	.LFB14:
+ 199               	.LM40:
+ 200               	.LVL21:
+ 201               	/* prologue: function */
+ 202               	/* frame size = 0 */
+ 203               	.LM41:
+ 204 0080 C498      		cbi 56-32,4
+ 205               	.LM42:
+ 206 0082 8068      		ori r24,lo8(-128)
+ 207               	.LVL22:
+ 208 0084 8FB9      		out 47-32,r24
+ 209               	.LM43:
+ 210 0086 80E4      		ldi r24,lo8(64)
+ 211 0088 8EB9      		out 46-32,r24
+ 212               	.LM44:
+ 213 008a 8BE1      		ldi r24,lo8(27)
+ 214               	.L30:
+ 215 008c 8DB9      		out 45-32,r24
+ 216               	.LM45:
+ 217 008e 769B      		sbis 46-32,6
+ 218 0090 00C0      		rjmp .L30
+ 219               	.LM46:
+ 220 0092 6FB9      		out 47-32,r22
+ 221               	.LM47:
+ 222 0094 80E4      		ldi r24,lo8(64)
+ 223 0096 8EB9      		out 46-32,r24
+ 224               	.LM48:
+ 225 0098 8BE1      		ldi r24,lo8(27)
+ 226               	.L31:
+ 227 009a 8DB9      		out 45-32,r24
+ 228               	.LM49:
+ 229 009c 769B      		sbis 46-32,6
+ 230 009e 00C0      		rjmp .L31
+ 231               	.LM50:
+ 232 00a0 C49A      		sbi 56-32,4
+ 233               	/* epilogue start */
+ 234               	.LM51:
+ 235 00a2 0895      		ret
+ 236               	.LFE14:
+ 238               	.global	spiRead
+ 240               	spiRead:
+ 241               	.LFB15:
+ 242               	.LM52:
+ 243               	.LVL23:
+ 244               	/* prologue: function */
+ 245               	/* frame size = 0 */
+ 246               	.LM53:
+ 247 00a4 C498      		cbi 56-32,4
+ 248               	.LM54:
+ 249 00a6 8F77      		andi r24,lo8(127)
+ 250               	.LVL24:
+ 251 00a8 8FB9      		out 47-32,r24
+ 252               	.LM55:
+ 253 00aa 80E4      		ldi r24,lo8(64)
+ 254 00ac 8EB9      		out 46-32,r24
+ 255               	.LM56:
+ 256 00ae 8BE1      		ldi r24,lo8(27)
+ 257               	.L36:
+ 258 00b0 8DB9      		out 45-32,r24
+ 259               	.LM57:
+ 260 00b2 769B      		sbis 46-32,6
+ 261 00b4 00C0      		rjmp .L36
+ 262               	.LM58:
+ 263 00b6 1FB8      		out 47-32,__zero_reg__
+ 264               	.LM59:
+ 265 00b8 80E4      		ldi r24,lo8(64)
+ 266 00ba 8EB9      		out 46-32,r24
+ 267               	.LM60:
+ 268 00bc 8BE1      		ldi r24,lo8(27)
+ 269               	.L37:
+ 270 00be 8DB9      		out 45-32,r24
+ 271               	.LM61:
+ 272 00c0 769B      		sbis 46-32,6
+ 273 00c2 00C0      		rjmp .L37
+ 274               	.LM62:
+ 275 00c4 C49A      		sbi 56-32,4
+ 276               	.LM63:
+ 277 00c6 8FB1      		in r24,47-32
+ 278               	/* epilogue start */
+ 279               	.LM64:
+ 280 00c8 0895      		ret
+ 281               	.LFE15:
+ 283               	.global	usartSendDump
+ 285               	usartSendDump:
+ 286               	.LFB16:
+ 287               	.LM65:
+ 288 00ca EF92      		push r14
+ 289 00cc FF92      		push r15
+ 290 00ce 0F93      		push r16
+ 291 00d0 1F93      		push r17
+ 292               	/* prologue: function */
+ 293               	/* frame size = 0 */
+ 294               	.LM66:
+ 295 00d2 10E0      		ldi r17,lo8(0)
+ 296               	.LVL25:
+ 297               	.LBB64:
+ 298               	.LBB65:
+ 299               	.LM67:
+ 300 00d4 9AE3      		ldi r25,lo8(58)
+ 301 00d6 E92E      		mov r14,r25
+ 302               	.LBE65:
+ 303               	.LBE64:
+ 304               	.LBB67:
+ 305               	.LBB68:
+ 306 00d8 80E2      		ldi r24,lo8(32)
+ 307 00da F82E      		mov r15,r24
+ 308               	.LVL26:
+ 309               	.L44:
+ 310               	.LBE68:
+ 311               	.LBE67:
+ 312               	.LM68:
+ 313 00dc 812F      		mov r24,r17
+ 314 00de 00D0      		rcall spiRead
+ 315 00e0 082F      		mov r16,r24
+ 316               	.LM69:
+ 317 00e2 812F      		mov r24,r17
+ 318 00e4 00D0      		rcall usartHEXmyoutput
+ 319               	.L42:
+ 320               	.LBB70:
+ 321               	.LBB66:
+ 322               	.LM70:
+ 323 00e6 5D9B      		sbis 43-32,5
+ 324 00e8 00C0      		rjmp .L42
+ 325               	.LM71:
+ 326 00ea ECB8      		out 44-32,r14
+ 327               	.L43:
+ 328               	.LBE66:
+ 329               	.LBE70:
+ 330               	.LBB71:
+ 331               	.LBB69:
+ 332               	.LM72:
+ 333 00ec 5D9B      		sbis 43-32,5
+ 334 00ee 00C0      		rjmp .L43
+ 335               	.LM73:
+ 336 00f0 FCB8      		out 44-32,r15
+ 337               	.LBE69:
+ 338               	.LBE71:
+ 339               	.LM74:
+ 340 00f2 802F      		mov r24,r16
+ 341 00f4 00D0      		rcall usartHEXmyoutput
+ 342               	.LM75:
+ 343 00f6 00D0      		rcall usartPutCRLF
+ 344               	.LM76:
+ 345 00f8 1F5F      		subi r17,lo8(-(1))
+ 346 00fa 1038      		cpi r17,lo8(-128)
+ 347 00fc 01F4      		brne .L44
+ 348               	/* epilogue start */
+ 349               	.LM77:
+ 350 00fe 1F91      		pop r17
+ 351               	.LVL27:
+ 352 0100 0F91      		pop r16
+ 353               	.LVL28:
+ 354 0102 FF90      		pop r15
+ 355 0104 EF90      		pop r14
+ 356 0106 0895      		ret
+ 357               	.LFE16:
+ 359               	.global	usartFillbuffer
+ 361               	usartFillbuffer:
+ 362               	.LFB18:
+ 363               	.LM78:
+ 364               	/* prologue: function */
+ 365               	/* frame size = 0 */
+ 366               	.LM79:
+ 367 0108 00D0      		rcall usartPutCRLF
+ 368               	.L50:
+ 369               	.LBB72:
+ 370               	.LBB73:
+ 371               	.LM80:
+ 372 010a 5D9B      		sbis 43-32,5
+ 373 010c 00C0      		rjmp .L50
+ 374               	.LM81:
+ 375 010e 8EE3      		ldi r24,lo8(62)
+ 376 0110 8CB9      		out 44-32,r24
+ 377 0112 90E0      		ldi r25,lo8(0)
+ 378               	.LVL29:
+ 379               	.L60:
+ 380               	.LBE73:
+ 381               	.LBE72:
+ 382               	.LM82:
+ 383 0114 5F9B      		sbis 43-32,7
+ 384 0116 00C0      		rjmp .L60
+ 385               	.LM83:
+ 386 0118 8CB1      		in r24,44-32
+ 387               	.LM84:
+ 388 011a E92F      		mov r30,r25
+ 389 011c F0E0      		ldi r31,lo8(0)
+ 390 011e E050      		subi r30,lo8(-(scratch))
+ 391 0120 F040      		sbci r31,hi8(-(scratch))
+ 392               	.LVL30:
+ 393 0122 8083      		st Z,r24
+ 394 0124 9F5F      		subi r25,lo8(-(1))
+ 395               	.LVL31:
+ 396               	.L52:
+ 397               	.LBB74:
+ 398               	.LBB75:
+ 399               	.LM85:
+ 400 0126 5D9B      		sbis 43-32,5
+ 401 0128 00C0      		rjmp .L52
+ 402               	.LM86:
+ 403 012a 8CB9      		out 44-32,r24
+ 404               	.LBE75:
+ 405               	.LBE74:
+ 406               	.LM87:
+ 407 012c 8D30      		cpi r24,lo8(13)
+ 408 012e 01F4      		brne .L60
+ 409               	.LM88:
+ 410 0130 9150      		subi r25,lo8(-(-1))
+ 411 0132 E92F      		mov r30,r25
+ 412 0134 F0E0      		ldi r31,lo8(0)
+ 413               	.LVL32:
+ 414 0136 E050      		subi r30,lo8(-(scratch))
+ 415 0138 F040      		sbci r31,hi8(-(scratch))
+ 416 013a 1082      		st Z,__zero_reg__
+ 417               	.L53:
+ 418               	.LBB76:
+ 419               	.LBB77:
+ 420               	.LM89:
+ 421 013c 5D9B      		sbis 43-32,5
+ 422 013e 00C0      		rjmp .L53
+ 423               	.LM90:
+ 424 0140 8AE0      		ldi r24,lo8(10)
+ 425               	.LVL33:
+ 426 0142 8CB9      		out 44-32,r24
+ 427               	/* epilogue start */
+ 428               	.LBE77:
+ 429               	.LBE76:
+ 430               	.LM91:
+ 431 0144 0895      		ret
+ 432               	.LFE18:
+ 434               	.global	setParam
+ 436               	setParam:
+ 437               	.LFB19:
+ 438               	.LM92:
+ 439               	/* prologue: function */
+ 440               	/* frame size = 0 */
+ 441               	.LM93:
+ 442 0146 00D0      		rcall getDIPvalue
+ 443               	.LM94:
+ 444 0148 8F70      		andi r24,lo8(15)
+ 445               	.LVL34:
+ 446               	.LM95:
+ 447 014a 01F4      		brne .+2
+ 448 014c 00C0      		rjmp .L74
+ 449               	.LM96:
+ 450 014e 8130      		cpi r24,lo8(1)
+ 451 0150 01F4      		brne .L63
+ 452               	.LM97:
+ 453 0152 80E7      		ldi r24,lo8(112)
+ 454               	.LVL35:
+ 455 0154 60E2      		ldi r22,lo8(32)
+ 456 0156 00D0      		rcall spiWrite
+ 457               	.LM98:
+ 458 0158 8CE1      		ldi r24,lo8(28)
+ 459 015a 63E3      		ldi r22,lo8(51)
+ 460 015c 00D0      		rcall spiWrite
+ 461               	.LM99:
+ 462 015e 80E2      		ldi r24,lo8(32)
+ 463 0160 60ED      		ldi r22,lo8(-48)
+ 464 0162 00D0      		rcall spiWrite
+ 465               	.LM100:
+ 466 0164 81E2      		ldi r24,lo8(33)
+ 467 0166 60E0      		ldi r22,lo8(0)
+ 468 0168 00D0      		rcall spiWrite
+ 469               	.LM101:
+ 470 016a 82E2      		ldi r24,lo8(34)
+ 471 016c 6DE9      		ldi r22,lo8(-99)
+ 472 016e 00D0      		rcall spiWrite
+ 473               	.LM102:
+ 474 0170 83E2      		ldi r24,lo8(35)
+ 475 0172 69E4      		ldi r22,lo8(73)
+ 476 0174 00D0      		rcall spiWrite
+ 477               	.LM103:
+ 478 0176 84E2      		ldi r24,lo8(36)
+ 479 0178 60E0      		ldi r22,lo8(0)
+ 480 017a 00D0      		rcall spiWrite
+ 481               	.LM104:
+ 482 017c 85E2      		ldi r24,lo8(37)
+ 483 017e 60EA      		ldi r22,lo8(-96)
+ 484 0180 00C0      		rjmp .L75
+ 485               	.LVL36:
+ 486               	.L63:
+ 487               	.LM105:
+ 488 0182 8230      		cpi r24,lo8(2)
+ 489 0184 01F4      		brne .L65
+ 490               	.LM106:
+ 491 0186 80E7      		ldi r24,lo8(112)
+ 492               	.LVL37:
+ 493 0188 60E2      		ldi r22,lo8(32)
+ 494 018a 00D0      		rcall spiWrite
+ 495               	.LM107:
+ 496 018c 8CE1      		ldi r24,lo8(28)
+ 497 018e 67E0      		ldi r22,lo8(7)
+ 498 0190 00D0      		rcall spiWrite
+ 499               	.LM108:
+ 500 0192 80E2      		ldi r24,lo8(32)
+ 501 0194 63E8      		ldi r22,lo8(-125)
+ 502 0196 00D0      		rcall spiWrite
+ 503               	.LM109:
+ 504 0198 81E2      		ldi r24,lo8(33)
+ 505 019a 60EC      		ldi r22,lo8(-64)
+ 506 019c 00D0      		rcall spiWrite
+ 507               	.LM110:
+ 508 019e 82E2      		ldi r24,lo8(34)
+ 509 01a0 63E1      		ldi r22,lo8(19)
+ 510 01a2 00D0      		rcall spiWrite
+ 511               	.LM111:
+ 512 01a4 83E2      		ldi r24,lo8(35)
+ 513 01a6 69EA      		ldi r22,lo8(-87)
+ 514 01a8 00D0      		rcall spiWrite
+ 515               	.LM112:
+ 516 01aa 84E2      		ldi r24,lo8(36)
+ 517 01ac 60E0      		ldi r22,lo8(0)
+ 518 01ae 00D0      		rcall spiWrite
+ 519               	.LM113:
+ 520 01b0 85E2      		ldi r24,lo8(37)
+ 521 01b2 65E0      		ldi r22,lo8(5)
+ 522 01b4 00C0      		rjmp .L75
+ 523               	.LVL38:
+ 524               	.L65:
+ 525               	.LM114:
+ 526 01b6 8330      		cpi r24,lo8(3)
+ 527 01b8 01F4      		brne .L67
+ 528               	.LM115:
+ 529 01ba 80E7      		ldi r24,lo8(112)
+ 530               	.LVL39:
+ 531 01bc 60E2      		ldi r22,lo8(32)
+ 532 01be 00D0      		rcall spiWrite
+ 533               	.LM116:
+ 534 01c0 8CE1      		ldi r24,lo8(28)
+ 535 01c2 64E3      		ldi r22,lo8(52)
+ 536 01c4 00D0      		rcall spiWrite
+ 537               	.LM117:
+ 538 01c6 80E2      		ldi r24,lo8(32)
+ 539 01c8 68E6      		ldi r22,lo8(104)
+ 540 01ca 00D0      		rcall spiWrite
+ 541               	.LM118:
+ 542 01cc 81E2      		ldi r24,lo8(33)
+ 543 01ce 61E0      		ldi r22,lo8(1)
+ 544 01d0 00D0      		rcall spiWrite
+ 545               	.LM119:
+ 546 01d2 82E2      		ldi r24,lo8(34)
+ 547 01d4 6AE3      		ldi r22,lo8(58)
+ 548 01d6 00D0      		rcall spiWrite
+ 549               	.LM120:
+ 550 01d8 83E2      		ldi r24,lo8(35)
+ 551 01da 63E9      		ldi r22,lo8(-109)
+ 552 01dc 00D0      		rcall spiWrite
+ 553               	.LM121:
+ 554 01de 84E2      		ldi r24,lo8(36)
+ 555 01e0 62E0      		ldi r22,lo8(2)
+ 556 01e2 00D0      		rcall spiWrite
+ 557               	.LM122:
+ 558 01e4 85E2      		ldi r24,lo8(37)
+ 559 01e6 68E7      		ldi r22,lo8(120)
+ 560 01e8 00C0      		rjmp .L75
+ 561               	.LVL40:
+ 562               	.L67:
+ 563               	.LM123:
+ 564 01ea 8430      		cpi r24,lo8(4)
+ 565 01ec 01F4      		brne .L64
+ 566               	.LM124:
+ 567 01ee 80E7      		ldi r24,lo8(112)
+ 568               	.LVL41:
+ 569 01f0 60E2      		ldi r22,lo8(32)
+ 570 01f2 00D0      		rcall spiWrite
+ 571               	.LM125:
+ 572 01f4 8CE1      		ldi r24,lo8(28)
+ 573 01f6 64E0      		ldi r22,lo8(4)
+ 574 01f8 00D0      		rcall spiWrite
+ 575               	.LM126:
+ 576 01fa 80E2      		ldi r24,lo8(32)
+ 577 01fc 61E4      		ldi r22,lo8(65)
+ 578 01fe 00D0      		rcall spiWrite
+ 579               	.LM127:
+ 580 0200 81E2      		ldi r24,lo8(33)
+ 581 0202 60E6      		ldi r22,lo8(96)
+ 582 0204 00D0      		rcall spiWrite
+ 583               	.LM128:
+ 584 0206 82E2      		ldi r24,lo8(34)
+ 585 0208 67E2      		ldi r22,lo8(39)
+ 586 020a 00D0      		rcall spiWrite
+ 587               	.LM129:
+ 588 020c 83E2      		ldi r24,lo8(35)
+ 589 020e 62E5      		ldi r22,lo8(82)
+ 590 0210 00D0      		rcall spiWrite
+ 591               	.LM130:
+ 592 0212 84E2      		ldi r24,lo8(36)
+ 593 0214 60E0      		ldi r22,lo8(0)
+ 594 0216 00D0      		rcall spiWrite
+ 595               	.LM131:
+ 596 0218 85E2      		ldi r24,lo8(37)
+ 597 021a 6AE0      		ldi r22,lo8(10)
+ 598 021c 00C0      		rjmp .L75
+ 599               	.LVL42:
+ 600               	.L64:
+ 601               	.LM132:
+ 602 021e 8530      		cpi r24,lo8(5)
+ 603 0220 01F4      		brne .L66
+ 604               	.LM133:
+ 605 0222 80E7      		ldi r24,lo8(112)
+ 606               	.LVL43:
+ 607 0224 60E2      		ldi r22,lo8(32)
+ 608 0226 00D0      		rcall spiWrite
+ 609               	.LM134:
+ 610 0228 8CE1      		ldi r24,lo8(28)
+ 611 022a 61E2      		ldi r22,lo8(33)
+ 612 022c 00C0      		rjmp .L76
+ 613               	.LVL44:
+ 614               	.L66:
+ 615               	.LM135:
+ 616 022e 8630      		cpi r24,lo8(6)
+ 617 0230 01F4      		brne .L68
+ 618               	.LM136:
+ 619 0232 80E7      		ldi r24,lo8(112)
+ 620               	.LVL45:
+ 621 0234 60E2      		ldi r22,lo8(32)
+ 622 0236 00D0      		rcall spiWrite
+ 623               	.LM137:
+ 624 0238 8CE1      		ldi r24,lo8(28)
+ 625 023a 63E0      		ldi r22,lo8(3)
+ 626 023c 00D0      		rcall spiWrite
+ 627               	.LM138:
+ 628 023e 80E2      		ldi r24,lo8(32)
+ 629 0240 60E9      		ldi r22,lo8(-112)
+ 630 0242 00D0      		rcall spiWrite
+ 631               	.LM139:
+ 632 0244 81E2      		ldi r24,lo8(33)
+ 633 0246 60E2      		ldi r22,lo8(32)
+ 634 0248 00D0      		rcall spiWrite
+ 635               	.LM140:
+ 636 024a 82E2      		ldi r24,lo8(34)
+ 637 024c 61E5      		ldi r22,lo8(81)
+ 638 024e 00D0      		rcall spiWrite
+ 639               	.LM141:
+ 640 0250 83E2      		ldi r24,lo8(35)
+ 641 0252 6CEE      		ldi r22,lo8(-20)
+ 642 0254 00D0      		rcall spiWrite
+ 643               	.LM142:
+ 644 0256 84E2      		ldi r24,lo8(36)
+ 645 0258 60E0      		ldi r22,lo8(0)
+ 646 025a 00D0      		rcall spiWrite
+ 647               	.LM143:
+ 648 025c 85E2      		ldi r24,lo8(37)
+ 649 025e 6BE2      		ldi r22,lo8(43)
+ 650 0260 00C0      		rjmp .L75
+ 651               	.LVL46:
+ 652               	.L68:
+ 653               	.LM144:
+ 654 0262 8730      		cpi r24,lo8(7)
+ 655 0264 01F4      		brne .L69
+ 656               	.LM145:
+ 657 0266 80E7      		ldi r24,lo8(112)
+ 658               	.LVL47:
+ 659 0268 60E2      		ldi r22,lo8(32)
+ 660 026a 00D0      		rcall spiWrite
+ 661               	.LM146:
+ 662 026c 8CE1      		ldi r24,lo8(28)
+ 663 026e 61E1      		ldi r22,lo8(17)
+ 664 0270 00C0      		rjmp .L76
+ 665               	.LVL48:
+ 666               	.L69:
+ 667               	.LM147:
+ 668 0272 8830      		cpi r24,lo8(8)
+ 669 0274 01F4      		brne .L70
+ 670               	.LM148:
+ 671 0276 80E7      		ldi r24,lo8(112)
+ 672               	.LVL49:
+ 673 0278 60E0      		ldi r22,lo8(0)
+ 674 027a 00D0      		rcall spiWrite
+ 675               	.LM149:
+ 676 027c 8CE1      		ldi r24,lo8(28)
+ 677 027e 61E0      		ldi r22,lo8(1)
+ 678               	.L76:
+ 679 0280 00D0      		rcall spiWrite
+ 680               	.LM150:
+ 681 0282 80E2      		ldi r24,lo8(32)
+ 682 0284 64E6      		ldi r22,lo8(100)
+ 683 0286 00D0      		rcall spiWrite
+ 684               	.LM151:
+ 685 0288 81E2      		ldi r24,lo8(33)
+ 686 028a 61E0      		ldi r22,lo8(1)
+ 687 028c 00D0      		rcall spiWrite
+ 688               	.LM152:
+ 689 028e 82E2      		ldi r24,lo8(34)
+ 690 0290 67E4      		ldi r22,lo8(71)
+ 691 0292 00D0      		rcall spiWrite
+ 692               	.LM153:
+ 693 0294 83E2      		ldi r24,lo8(35)
+ 694 0296 6EEA      		ldi r22,lo8(-82)
+ 695 0298 00D0      		rcall spiWrite
+ 696               	.LM154:
+ 697 029a 84E2      		ldi r24,lo8(36)
+ 698 029c 65E0      		ldi r22,lo8(5)
+ 699 029e 00D0      		rcall spiWrite
+ 700               	.LM155:
+ 701 02a0 85E2      		ldi r24,lo8(37)
+ 702 02a2 61E2      		ldi r22,lo8(33)
+ 703 02a4 00C0      		rjmp .L75
+ 704               	.LVL50:
+ 705               	.L70:
+ 706               	.LM156:
+ 707 02a6 8930      		cpi r24,lo8(9)
+ 708 02a8 01F4      		brne .L71
+ 709               	.LM157:
+ 710 02aa 80E7      		ldi r24,lo8(112)
+ 711               	.LVL51:
+ 712 02ac 60E0      		ldi r22,lo8(0)
+ 713 02ae 00D0      		rcall spiWrite
+ 714               	.LM158:
+ 715 02b0 8CE1      		ldi r24,lo8(28)
+ 716 02b2 65E0      		ldi r22,lo8(5)
+ 717 02b4 00D0      		rcall spiWrite
+ 718               	.LM159:
+ 719 02b6 80E2      		ldi r24,lo8(32)
+ 720 02b8 64E6      		ldi r22,lo8(100)
+ 721 02ba 00D0      		rcall spiWrite
+ 722               	.LM160:
+ 723 02bc 81E2      		ldi r24,lo8(33)
+ 724 02be 61E0      		ldi r22,lo8(1)
+ 725 02c0 00D0      		rcall spiWrite
+ 726               	.LM161:
+ 727 02c2 82E2      		ldi r24,lo8(34)
+ 728 02c4 67E4      		ldi r22,lo8(71)
+ 729 02c6 00D0      		rcall spiWrite
+ 730               	.LM162:
+ 731 02c8 83E2      		ldi r24,lo8(35)
+ 732 02ca 6EEA      		ldi r22,lo8(-82)
+ 733 02cc 00D0      		rcall spiWrite
+ 734               	.LM163:
+ 735 02ce 84E2      		ldi r24,lo8(36)
+ 736 02d0 62E0      		ldi r22,lo8(2)
+ 737 02d2 00D0      		rcall spiWrite
+ 738               	.LM164:
+ 739 02d4 85E2      		ldi r24,lo8(37)
+ 740 02d6 61E9      		ldi r22,lo8(-111)
+ 741 02d8 00C0      		rjmp .L75
+ 742               	.LVL52:
+ 743               	.L71:
+ 744               	.LM165:
+ 745 02da 8A30      		cpi r24,lo8(10)
+ 746 02dc 01F4      		brne .L72
+ 747               	.LM166:
+ 748 02de 80E7      		ldi r24,lo8(112)
+ 749               	.LVL53:
+ 750 02e0 60E0      		ldi r22,lo8(0)
+ 751 02e2 00D0      		rcall spiWrite
+ 752               	.LM167:
+ 753 02e4 8CE1      		ldi r24,lo8(28)
+ 754 02e6 6FE0      		ldi r22,lo8(15)
+ 755 02e8 00D0      		rcall spiWrite
+ 756               	.LM168:
+ 757 02ea 80E2      		ldi r24,lo8(32)
+ 758 02ec 68E7      		ldi r22,lo8(120)
+ 759 02ee 00D0      		rcall spiWrite
+ 760               	.LM169:
+ 761 02f0 81E2      		ldi r24,lo8(33)
+ 762 02f2 61E0      		ldi r22,lo8(1)
+ 763 02f4 00D0      		rcall spiWrite
+ 764               	.LM170:
+ 765 02f6 82E2      		ldi r24,lo8(34)
+ 766 02f8 61E1      		ldi r22,lo8(17)
+ 767 02fa 00D0      		rcall spiWrite
+ 768               	.LM171:
+ 769 02fc 83E2      		ldi r24,lo8(35)
+ 770 02fe 61E1      		ldi r22,lo8(17)
+ 771 0300 00D0      		rcall spiWrite
+ 772               	.LM172:
+ 773 0302 84E2      		ldi r24,lo8(36)
+ 774 0304 64E0      		ldi r22,lo8(4)
+ 775 0306 00D0      		rcall spiWrite
+ 776               	.LM173:
+ 777 0308 85E2      		ldi r24,lo8(37)
+ 778 030a 66E4      		ldi r22,lo8(70)
+ 779 030c 00C0      		rjmp .L75
+ 780               	.LVL54:
+ 781               	.L72:
+ 782               	.LM174:
+ 783 030e 8B30      		cpi r24,lo8(11)
+ 784 0310 01F4      		brne .L73
+ 785               	.LM175:
+ 786 0312 80E7      		ldi r24,lo8(112)
+ 787               	.LVL55:
+ 788 0314 60E0      		ldi r22,lo8(0)
+ 789 0316 00D0      		rcall spiWrite
+ 790               	.LM176:
+ 791 0318 8CE1      		ldi r24,lo8(28)
+ 792 031a 6EE0      		ldi r22,lo8(14)
+ 793 031c 00D0      		rcall spiWrite
+ 794               	.LM177:
+ 795 031e 80E2      		ldi r24,lo8(32)
+ 796 0320 68E7      		ldi r22,lo8(120)
+ 797 0322 00D0      		rcall spiWrite
+ 798               	.LM178:
+ 799 0324 81E2      		ldi r24,lo8(33)
+ 800 0326 61E0      		ldi r22,lo8(1)
+ 801 0328 00D0      		rcall spiWrite
+ 802               	.LM179:
+ 803 032a 82E2      		ldi r24,lo8(34)
+ 804 032c 61E1      		ldi r22,lo8(17)
+ 805 032e 00D0      		rcall spiWrite
+ 806               	.LM180:
+ 807 0330 83E2      		ldi r24,lo8(35)
+ 808 0332 61E1      		ldi r22,lo8(17)
+ 809 0334 00D0      		rcall spiWrite
+ 810               	.LM181:
+ 811 0336 84E2      		ldi r24,lo8(36)
+ 812 0338 60E0      		ldi r22,lo8(0)
+ 813 033a 00D0      		rcall spiWrite
+ 814               	.LM182:
+ 815 033c 85E2      		ldi r24,lo8(37)
+ 816 033e 68EB      		ldi r22,lo8(-72)
+ 817               	.L75:
+ 818 0340 00D0      		rcall spiWrite
+ 819 0342 0895      		ret
+ 820               	.LVL56:
+ 821               	.L73:
+ 822               	.LM183:
+ 823 0344 8C30      		cpi r24,lo8(12)
+ 824 0346 01F4      		brne .L74
+ 825               	.LM184:
+ 826 0348 80E7      		ldi r24,lo8(112)
+ 827               	.LVL57:
+ 828 034a 60E2      		ldi r22,lo8(32)
+ 829 034c 00D0      		rcall spiWrite
+ 830               	.LM185:
+ 831 034e 8CE1      		ldi r24,lo8(28)
+ 832 0350 64E0      		ldi r22,lo8(4)
+ 833 0352 00D0      		rcall spiWrite
+ 834               	.LM186:
+ 835 0354 80E2      		ldi r24,lo8(32)
+ 836 0356 68EC      		ldi r22,lo8(-56)
+ 837 0358 00D0      		rcall spiWrite
+ 838               	.LM187:
+ 839 035a 81E2      		ldi r24,lo8(33)
+ 840 035c 60E0      		ldi r22,lo8(0)
+ 841 035e 00D0      		rcall spiWrite
+ 842               	.LM188:
+ 843 0360 82E2      		ldi r24,lo8(34)
+ 844 0362 63EA      		ldi r22,lo8(-93)
+ 845 0364 00D0      		rcall spiWrite
+ 846               	.LM189:
+ 847 0366 83E2      		ldi r24,lo8(35)
+ 848 0368 67ED      		ldi r22,lo8(-41)
+ 849 036a 00D0      		rcall spiWrite
+ 850               	.LM190:
+ 851 036c 84E2      		ldi r24,lo8(36)
+ 852 036e 60E0      		ldi r22,lo8(0)
+ 853 0370 00D0      		rcall spiWrite
+ 854               	.LM191:
+ 855 0372 85E2      		ldi r24,lo8(37)
+ 856 0374 66EA      		ldi r22,lo8(-90)
+ 857 0376 00D0      		rcall spiWrite
+ 858               	.LVL58:
+ 859               	.L74:
+ 860 0378 0895      		ret
+ 861               	.LFE19:
+ 863               	.global	parseBuffer
+ 865               	parseBuffer:
+ 866               	.LFB20:
+ 867               	.LM192:
+ 868               	.LVL59:
+ 869 037a 0F93      		push r16
+ 870 037c 1F93      		push r17
+ 871 037e CF93      		push r28
+ 872 0380 DF93      		push r29
+ 873               	/* prologue: function */
+ 874               	/* frame size = 0 */
+ 875 0382 EC01      		movw r28,r24
+ 876               	.LM193:
+ 877 0384 8881      		ld r24,Y
+ 878               	.LVL60:
+ 879 0386 8735      		cpi r24,lo8(87)
+ 880 0388 01F4      		brne .L78
+ 881               	.LM194:
+ 882 038a 8A81      		ldd r24,Y+2
+ 883 038c 382F      		mov r19,r24
+ 884               	.LVL61:
+ 885 038e 3053      		subi r19,lo8(-(-48))
+ 886 0390 3A30      		cpi r19,lo8(10)
+ 887 0392 00F0      		brlo .L79
+ 888               	.LM195:
+ 889 0394 3750      		subi r19,lo8(-(-7))
+ 890               	.L79:
+ 891               	.LM196:
+ 892 0396 9B81      		ldd r25,Y+3
+ 893 0398 892F      		mov r24,r25
+ 894               	.LVL62:
+ 895 039a 8053      		subi r24,lo8(-(-48))
+ 896 039c 8A30      		cpi r24,lo8(10)
+ 897 039e 00F0      		brlo .L80
+ 898               	.LM197:
+ 899 03a0 8750      		subi r24,lo8(-(-7))
+ 900               	.L80:
+ 901               	.LM198:
+ 902 03a2 2D81      		ldd r18,Y+5
+ 903 03a4 922F      		mov r25,r18
+ 904               	.LVL63:
+ 905 03a6 9053      		subi r25,lo8(-(-48))
+ 906 03a8 9A30      		cpi r25,lo8(10)
+ 907 03aa 00F0      		brlo .L81
+ 908               	.LM199:
+ 909 03ac 9750      		subi r25,lo8(-(-7))
+ 910               	.L81:
+ 911               	.LM200:
+ 912 03ae 2E81      		ldd r18,Y+6
+ 913 03b0 622F      		mov r22,r18
+ 914               	.LVL64:
+ 915 03b2 6053      		subi r22,lo8(-(-48))
+ 916 03b4 6A30      		cpi r22,lo8(10)
+ 917 03b6 00F0      		brlo .L82
+ 918               	.LM201:
+ 919 03b8 6750      		subi r22,lo8(-(-7))
+ 920               	.L82:
+ 921               	.LM202:
+ 922 03ba 9295      		swap r25
+ 923 03bc 907F      		andi r25,lo8(-16)
+ 924               	.LM203:
+ 925 03be 3295      		swap r19
+ 926               	.LVL65:
+ 927 03c0 307F      		andi r19,lo8(-16)
+ 928 03c2 692B      		or r22,r25
+ 929 03c4 832B      		or r24,r19
+ 930 03c6 00D0      		rcall spiWrite
+ 931               	.LVL66:
+ 932               	.L78:
+ 933               	.LM204:
+ 934 03c8 8881      		ld r24,Y
+ 935 03ca 8434      		cpi r24,lo8(68)
+ 936 03cc 01F4      		brne .L83
+ 937               	.LM205:
+ 938 03ce 00D0      		rcall usartSendDump
+ 939               	.L83:
+ 940               	.LM206:
+ 941 03d0 8881      		ld r24,Y
+ 942 03d2 8335      		cpi r24,lo8(83)
+ 943 03d4 01F4      		brne .L84
+ 944               	.LM207:
+ 945 03d6 87E0      		ldi r24,lo8(7)
+ 946 03d8 61E0      		ldi r22,lo8(1)
+ 947 03da 00D0      		rcall spiWrite
+ 948               	.L84:
+ 949               	.LM208:
+ 950 03dc 8881      		ld r24,Y
+ 951 03de 8435      		cpi r24,lo8(84)
+ 952 03e0 01F4      		brne .L85
+ 953               	.LM209:
+ 954 03e2 00D0      		rcall setParam
+ 955               	.LM210:
+ 956 03e4 87E0      		ldi r24,lo8(7)
+ 957 03e6 69E0      		ldi r22,lo8(9)
+ 958 03e8 00D0      		rcall spiWrite
+ 959               	.L85:
+ 960               	.LM211:
+ 961 03ea 8881      		ld r24,Y
+ 962 03ec 8035      		cpi r24,lo8(80)
+ 963 03ee 01F4      		brne .L86
+ 964               	.LM212:
+ 965 03f0 81E7      		ldi r24,lo8(113)
+ 966 03f2 00D0      		rcall spiRead
+ 967               	.LM213:
+ 968 03f4 682F      		mov r22,r24
+ 969 03f6 6063      		ori r22,lo8(48)
+ 970 03f8 81E7      		ldi r24,lo8(113)
+ 971 03fa 00D0      		rcall spiWrite
+ 972               	.L86:
+ 973               	.LM214:
+ 974 03fc 8881      		ld r24,Y
+ 975 03fe 8334      		cpi r24,lo8(67)
+ 976 0400 01F4      		brne .L87
+ 977               	.LM215:
+ 978 0402 81E7      		ldi r24,lo8(113)
+ 979 0404 00D0      		rcall spiRead
+ 980               	.LM216:
+ 981 0406 682F      		mov r22,r24
+ 982 0408 6C7F      		andi r22,lo8(-4)
+ 983 040a 81E7      		ldi r24,lo8(113)
+ 984 040c 00D0      		rcall spiWrite
+ 985               	.L87:
+ 986               	.LM217:
+ 987 040e 8881      		ld r24,Y
+ 988 0410 8734      		cpi r24,lo8(71)
+ 989 0412 01F4      		brne .L88
+ 990               	.LM218:
+ 991 0414 81E7      		ldi r24,lo8(113)
+ 992 0416 00D0      		rcall spiRead
+ 993               	.LM219:
+ 994 0418 682F      		mov r22,r24
+ 995 041a 6360      		ori r22,lo8(3)
+ 996 041c 81E7      		ldi r24,lo8(113)
+ 997 041e 00D0      		rcall spiWrite
+ 998               	.L88:
+ 999               	.LM220:
+ 1000 0420 8881      		ld r24,Y
+ 1001 0422 8F34      		cpi r24,lo8(79)
+ 1002 0424 01F4      		brne .L89
+ 1003               	.LM221:
+ 1004 0426 81E7      		ldi r24,lo8(113)
+ 1005 0428 00D0      		rcall spiRead
+ 1006               	.LM222:
+ 1007 042a 682F      		mov r22,r24
+ 1008               	.LVL67:
+ 1009 042c 6160      		ori r22,lo8(1)
+ 1010               	.LM223:
+ 1011 042e 6D7F      		andi r22,lo8(-3)
+ 1012 0430 81E7      		ldi r24,lo8(113)
+ 1013 0432 00D0      		rcall spiWrite
+ 1014               	.LVL68:
+ 1015               	.L89:
+ 1016               	.LM224:
+ 1017 0434 8881      		ld r24,Y
+ 1018 0436 8634      		cpi r24,lo8(70)
+ 1019 0438 01F4      		brne .L90
+ 1020               	.LM225:
+ 1021 043a 81E7      		ldi r24,lo8(113)
+ 1022 043c 00D0      		rcall spiRead
+ 1023               	.LM226:
+ 1024 043e 682F      		mov r22,r24
+ 1025               	.LVL69:
+ 1026 0440 6260      		ori r22,lo8(2)
+ 1027               	.LM227:
+ 1028 0442 6E7F      		andi r22,lo8(-2)
+ 1029 0444 81E7      		ldi r24,lo8(113)
+ 1030 0446 00D0      		rcall spiWrite
+ 1031               	.LVL70:
+ 1032               	.L90:
+ 1033               	.LM228:
+ 1034 0448 8881      		ld r24,Y
+ 1035 044a 8E34      		cpi r24,lo8(78)
+ 1036 044c 01F4      		brne .L91
+ 1037               	.LM229:
+ 1038 044e 81E7      		ldi r24,lo8(113)
+ 1039 0450 00D0      		rcall spiRead
+ 1040               	.LM230:
+ 1041 0452 682F      		mov r22,r24
+ 1042               	.LVL71:
+ 1043 0454 6062      		ori r22,lo8(32)
+ 1044               	.LM231:
+ 1045 0456 6F7E      		andi r22,lo8(-17)
+ 1046 0458 81E7      		ldi r24,lo8(113)
+ 1047 045a 00D0      		rcall spiWrite
+ 1048               	.LVL72:
+ 1049               	.L91:
+ 1050               	.LM232:
+ 1051 045c 8881      		ld r24,Y
+ 1052 045e 8235      		cpi r24,lo8(82)
+ 1053 0460 01F4      		brne .L92
+ 1054               	.LM233:
+ 1055 0462 8A81      		ldd r24,Y+2
+ 1056 0464 982F      		mov r25,r24
+ 1057               	.LVL73:
+ 1058 0466 9053      		subi r25,lo8(-(-48))
+ 1059 0468 9A30      		cpi r25,lo8(10)
+ 1060 046a 00F0      		brlo .L93
+ 1061               	.LM234:
+ 1062 046c 9750      		subi r25,lo8(-(-7))
+ 1063               	.L93:
+ 1064               	.LM235:
+ 1065 046e 2B81      		ldd r18,Y+3
+ 1066 0470 822F      		mov r24,r18
+ 1067               	.LVL74:
+ 1068 0472 8053      		subi r24,lo8(-(-48))
+ 1069 0474 8A30      		cpi r24,lo8(10)
+ 1070 0476 00F0      		brlo .L94
+ 1071               	.LM236:
+ 1072 0478 8750      		subi r24,lo8(-(-7))
+ 1073               	.L94:
+ 1074               	.LM237:
+ 1075 047a 9295      		swap r25
+ 1076 047c 907F      		andi r25,lo8(-16)
+ 1077               	.LM238:
+ 1078 047e 892B      		or r24,r25
+ 1079               	.LVL75:
+ 1080 0480 00D0      		rcall spiRead
+ 1081               	.LVL76:
+ 1082 0482 00D0      		rcall usartHEXmyoutput
+ 1083               	.L92:
+ 1084               	.LM239:
+ 1085 0484 8881      		ld r24,Y
+ 1086 0486 8133      		cpi r24,lo8(49)
+ 1087 0488 01F4      		brne .L95
+ 1088               	.LM240:
+ 1089 048a 85E0      		ldi r24,lo8(5)
+ 1090 048c 67E0      		ldi r22,lo8(7)
+ 1091 048e 00D0      		rcall spiWrite
+ 1092               	.LM241:
+ 1093 0490 00D0      		rcall setParam
+ 1094               	.LM242:
+ 1095 0492 9498      		cbi 50-32,4
+ 1096               	.LBB78:
+ 1097               	.LBB79:
+ 1098               	.LBB80:
+ 1099               	.LBB81:
+ 1100               	.LM243:
+ 1101 0494 04E6      		ldi r16,lo8(100)
+ 1102 0496 10E0      		ldi r17,hi8(100)
+ 1103 0498 00C0      		rjmp .L96
+ 1104               	.LVL77:
+ 1105               	.L99:
+ 1106               	.LBE81:
+ 1107               	.LBE80:
+ 1108               	.LBE79:
+ 1109               	.LBE78:
+ 1110               	.LM244:
+ 1111 049a 1092 0000 		sts flag,__zero_reg__
+ 1112               	.LM245:
+ 1113 049e 8FE7      		ldi r24,lo8(127)
+ 1114               	.LVL78:
+ 1115 04a0 6AE6      		ldi r22,lo8(106)
+ 1116 04a2 00D0      		rcall spiWrite
+ 1117               	.LVL79:
+ 1118               	.LM246:
+ 1119 04a4 8FE7      		ldi r24,lo8(127)
+ 1120 04a6 65E4      		ldi r22,lo8(69)
+ 1121 04a8 00D0      		rcall spiWrite
+ 1122               	.LM247:
+ 1123 04aa 87E0      		ldi r24,lo8(7)
+ 1124 04ac 69E0      		ldi r22,lo8(9)
+ 1125 04ae 00D0      		rcall spiWrite
+ 1126               	.L97:
+ 1127               	.LM248:
+ 1128 04b0 8091 0000 		lds r24,flag
+ 1129 04b4 8823      		tst r24
+ 1130 04b6 01F0      		breq .L97
+ 1131 04b8 8CED      		ldi r24,lo8(1500)
+ 1132 04ba 95E0      		ldi r25,hi8(1500)
+ 1133               	.LVL80:
+ 1134               	.L98:
+ 1135               	.LBB85:
+ 1136               	.LBB84:
+ 1137               	.LBB83:
+ 1138               	.LBB82:
+ 1139               	.LM249:
+ 1140 04bc F801      		movw r30,r16
+ 1141               	.LVL81:
+ 1142               	/* #APP */
+ 1143               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1144 04be 3197      		1: sbiw r30,1
+ 1145 04c0 01F4      		brne 1b
+ 1146               	 ;  0 "" 2
+ 1147               	/* #NOAPP */
+ 1148               	.LBE82:
+ 1149               	.LBE83:
+ 1150               	.LM250:
+ 1151 04c2 0197      		sbiw r24,1
+ 1152               	.LM251:
+ 1153 04c4 01F4      		brne .L98
+ 1154               	.L96:
+ 1155               	.LBE84:
+ 1156               	.LBE85:
+ 1157               	.LM252:
+ 1158 04c6 8599      		sbic 48-32,5
+ 1159 04c8 00C0      		rjmp .L99
+ 1160               	.LM253:
+ 1161 04ca 949A      		sbi 50-32,4
+ 1162               	.LM254:
+ 1163 04cc 85E0      		ldi r24,lo8(5)
+ 1164               	.LVL82:
+ 1165 04ce 60E0      		ldi r22,lo8(0)
+ 1166 04d0 00D0      		rcall spiWrite
+ 1167               	.LVL83:
+ 1168               	.LM255:
+ 1169 04d2 87E0      		ldi r24,lo8(7)
+ 1170 04d4 61E0      		ldi r22,lo8(1)
+ 1171 04d6 00D0      		rcall spiWrite
+ 1172               	.L95:
+ 1173               	.LM256:
+ 1174 04d8 8881      		ld r24,Y
+ 1175 04da 8233      		cpi r24,lo8(50)
+ 1176 04dc 01F4      		brne .L102
+ 1177               	.LM257:
+ 1178 04de 85E0      		ldi r24,lo8(5)
+ 1179 04e0 67E0      		ldi r22,lo8(7)
+ 1180 04e2 00D0      		rcall spiWrite
+ 1181               	.LM258:
+ 1182 04e4 00D0      		rcall setParam
+ 1183               	.LM259:
+ 1184 04e6 87E0      		ldi r24,lo8(7)
+ 1185 04e8 65E0      		ldi r22,lo8(5)
+ 1186 04ea 00D0      		rcall spiWrite
+ 1187               	.L101:
+ 1188               	.LM260:
+ 1189 04ec 8599      		sbic 48-32,5
+ 1190 04ee 00C0      		rjmp .L101
+ 1191               	.LM261:
+ 1192 04f0 85E0      		ldi r24,lo8(5)
+ 1193 04f2 60E0      		ldi r22,lo8(0)
+ 1194 04f4 00D0      		rcall spiWrite
+ 1195               	.LM262:
+ 1196 04f6 87E0      		ldi r24,lo8(7)
+ 1197 04f8 61E0      		ldi r22,lo8(1)
+ 1198 04fa 00D0      		rcall spiWrite
+ 1199               	.L102:
+ 1200               	/* epilogue start */
+ 1201               	.LM263:
+ 1202 04fc DF91      		pop r29
+ 1203 04fe CF91      		pop r28
+ 1204               	.LVL84:
+ 1205 0500 1F91      		pop r17
+ 1206 0502 0F91      		pop r16
+ 1207 0504 0895      		ret
+ 1208               	.LFE20:
+ 1210               	.global	__vector_1
+ 1212               	__vector_1:
+ 1213               	.LFB21:
+ 1214               	.LM264:
+ 1215 0506 1F92      		push __zero_reg__
+ 1216 0508 0F92      		push r0
+ 1217 050a 0FB6      		in r0,__SREG__
+ 1218 050c 0F92      		push r0
+ 1219 050e 1124      		clr __zero_reg__
+ 1220 0510 1F93      		push r17
+ 1221 0512 2F93      		push r18
+ 1222 0514 3F93      		push r19
+ 1223 0516 4F93      		push r20
+ 1224 0518 5F93      		push r21
+ 1225 051a 6F93      		push r22
+ 1226 051c 7F93      		push r23
+ 1227 051e 8F93      		push r24
+ 1228 0520 9F93      		push r25
+ 1229 0522 AF93      		push r26
+ 1230 0524 BF93      		push r27
+ 1231 0526 EF93      		push r30
+ 1232 0528 FF93      		push r31
+ 1233               	/* prologue: Signal */
+ 1234               	/* frame size = 0 */
+ 1235               	.LM265:
+ 1236 052a 87E0      		ldi r24,lo8(7)
+ 1237 052c 61E0      		ldi r22,lo8(1)
+ 1238 052e 00D0      		rcall spiWrite
+ 1239               	.LM266:
+ 1240 0530 83E0      		ldi r24,lo8(3)
+ 1241 0532 00D0      		rcall spiRead
+ 1242 0534 182F      		mov r17,r24
+ 1243               	.LVL85:
+ 1244               	.LM267:
+ 1245 0536 84E0      		ldi r24,lo8(4)
+ 1246 0538 00D0      		rcall spiRead
+ 1247               	.LM268:
+ 1248 053a 1770      		andi r17,lo8(7)
+ 1249               	.LM269:
+ 1250 053c 88E0      		ldi r24,lo8(8)
+ 1251 053e 62E0      		ldi r22,lo8(2)
+ 1252 0540 00D0      		rcall spiWrite
+ 1253               	.LM270:
+ 1254 0542 88E0      		ldi r24,lo8(8)
+ 1255 0544 60E0      		ldi r22,lo8(0)
+ 1256 0546 00D0      		rcall spiWrite
+ 1257               	.LM271:
+ 1258 0548 88E0      		ldi r24,lo8(8)
+ 1259 054a 61E0      		ldi r22,lo8(1)
+ 1260 054c 00D0      		rcall spiWrite
+ 1261               	.LM272:
+ 1262 054e 88E0      		ldi r24,lo8(8)
+ 1263 0550 60E0      		ldi r22,lo8(0)
+ 1264 0552 00D0      		rcall spiWrite
+ 1265               	.LM273:
+ 1266 0554 1430      		cpi r17,lo8(4)
+ 1267 0556 00F0      		brlo .L107
+ 1268 0558 81E0      		ldi r24,lo8(1)
+ 1269 055a 8093 0000 		sts flag,r24
+ 1270               	.L107:
+ 1271               	.LM274:
+ 1272 055e 1130      		cpi r17,lo8(1)
+ 1273 0560 01F4      		brne .L108
+ 1274               	.LM275:
+ 1275 0562 949A      		sbi 50-32,4
+ 1276               	.LM276:
+ 1277 0564 9398      		cbi 50-32,3
+ 1278               	.LBB86:
+ 1279               	.LBB87:
+ 1280               	.LBB88:
+ 1281               	.LBB89:
+ 1282               	.LM277:
+ 1283 0566 80E2      		ldi r24,lo8(20000)
+ 1284 0568 9EE4      		ldi r25,hi8(20000)
+ 1285               	.LVL86:
+ 1286               	/* #APP */
+ 1287               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1288 056a 0197      		1: sbiw r24,1
+ 1289 056c 01F4      		brne 1b
+ 1290               	 ;  0 "" 2
+ 1291               	/* #NOAPP */
+ 1292               	.LBE89:
+ 1293               	.LBE88:
+ 1294               	.LBE87:
+ 1295               	.LBE86:
+ 1296               	.LM278:
+ 1297 056e 939A      		sbi 50-32,3
+ 1298 0570 00C0      		rjmp .L111
+ 1299               	.LVL87:
+ 1300               	.L108:
+ 1301               	.LM279:
+ 1302 0572 1230      		cpi r17,lo8(2)
+ 1303 0574 01F4      		brne .L110
+ 1304               	.LM280:
+ 1305 0576 939A      		sbi 50-32,3
+ 1306               	.LM281:
+ 1307 0578 9498      		cbi 50-32,4
+ 1308               	.LBB90:
+ 1309               	.LBB91:
+ 1310               	.LBB92:
+ 1311               	.LBB93:
+ 1312               	.LM282:
+ 1313 057a 80E2      		ldi r24,lo8(20000)
+ 1314 057c 9EE4      		ldi r25,hi8(20000)
+ 1315               	.LVL88:
+ 1316               	/* #APP */
+ 1317               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1318 057e 0197      		1: sbiw r24,1
+ 1319 0580 01F4      		brne 1b
+ 1320               	 ;  0 "" 2
+ 1321               	/* #NOAPP */
+ 1322               	.LBE93:
+ 1323               	.LBE92:
+ 1324               	.LBE91:
+ 1325               	.LBE90:
+ 1326               	.LM283:
+ 1327 0582 949A      		sbi 50-32,4
+ 1328               	.LVL89:
+ 1329               	.L111:
+ 1330               	.LM284:
+ 1331 0584 87E0      		ldi r24,lo8(7)
+ 1332               	.LVL90:
+ 1333 0586 65E0      		ldi r22,lo8(5)
+ 1334 0588 00D0      		rcall spiWrite
+ 1335               	.L110:
+ 1336               	/* epilogue start */
+ 1337               	.LM285:
+ 1338 058a FF91      		pop r31
+ 1339 058c EF91      		pop r30
+ 1340 058e BF91      		pop r27
+ 1341 0590 AF91      		pop r26
+ 1342 0592 9F91      		pop r25
+ 1343 0594 8F91      		pop r24
+ 1344 0596 7F91      		pop r23
+ 1345 0598 6F91      		pop r22
+ 1346 059a 5F91      		pop r21
+ 1347 059c 4F91      		pop r20
+ 1348 059e 3F91      		pop r19
+ 1349 05a0 2F91      		pop r18
+ 1350 05a2 1F91      		pop r17
+ 1351               	.LVL91:
+ 1352 05a4 0F90      		pop r0
+ 1353 05a6 0FBE      		out __SREG__,r0
+ 1354 05a8 0F90      		pop r0
+ 1355 05aa 1F90      		pop __zero_reg__
+ 1356 05ac 1895      		reti
+ 1357               	.LFE21:
+ 1359               	.global	main
+ 1361               	main:
+ 1362               	.LFB22:
+ 1363               	.LM286:
+ 1364               	/* prologue: function */
+ 1365               	/* frame size = 0 */
+ 1366               	.LBB94:
+ 1367               	.LBB95:
+ 1368               	.LM287:
+ 1369 05ae 80ED      		ldi r24,lo8(-48)
+ 1370 05b0 87BB      		out 55-32,r24
+ 1371               	.LM288:
+ 1372 05b2 88B3      		in r24,56-32
+ 1373 05b4 8F60      		ori r24,lo8(15)
+ 1374 05b6 88BB      		out 56-32,r24
+ 1375               	.LM289:
+ 1376 05b8 98E1      		ldi r25,lo8(24)
+ 1377 05ba 91BB      		out 49-32,r25
+ 1378               	.LM290:
+ 1379 05bc 82B3      		in r24,50-32
+ 1380 05be 8366      		ori r24,lo8(99)
+ 1381 05c0 82BB      		out 50-32,r24
+ 1382               	.LM291:
+ 1383 05c2 939A      		sbi 50-32,3
+ 1384               	.LM292:
+ 1385 05c4 949A      		sbi 50-32,4
+ 1386               	.LM293:
+ 1387 05c6 15BE      		out 85-32,__zero_reg__
+ 1388               	.LM294:
+ 1389 05c8 80E4      		ldi r24,lo8(64)
+ 1390 05ca 8BBF      		out 91-32,r24
+ 1391               	.LBE95:
+ 1392               	.LBE94:
+ 1393               	.LBB96:
+ 1394               	.LBB97:
+ 1395               	.LM295:
+ 1396 05cc 8CE0      		ldi r24,lo8(12)
+ 1397 05ce 89B9      		out 41-32,r24
+ 1398               	.LM296:
+ 1399 05d0 12B8      		out 34-32,__zero_reg__
+ 1400               	.LM297:
+ 1401 05d2 86E0      		ldi r24,lo8(6)
+ 1402 05d4 83B9      		out 35-32,r24
+ 1403               	.LM298:
+ 1404 05d6 9AB9      		out 42-32,r25
+ 1405               	.LBE97:
+ 1406               	.LBE96:
+ 1407               	.LBB98:
+ 1408               	.LBB99:
+ 1409               	.LM299:
+ 1410 05d8 C49A      		sbi 56-32,4
+ 1411 05da 8CED      		ldi r24,lo8(1500)
+ 1412 05dc 95E0      		ldi r25,hi8(1500)
+ 1413               	.LVL92:
+ 1414               	.LBE99:
+ 1415               	.LBE98:
+ 1416               	.LBB100:
+ 1417               	.LBB101:
+ 1418               	.LBB102:
+ 1419               	.LBB103:
+ 1420               	.LBB104:
+ 1421               	.LBB105:
+ 1422               	.LM300:
+ 1423 05de 24E6      		ldi r18,lo8(100)
+ 1424 05e0 30E0      		ldi r19,hi8(100)
+ 1425               	.L113:
+ 1426 05e2 F901      		movw r30,r18
+ 1427               	.LVL93:
+ 1428               	/* #APP */
+ 1429               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1430 05e4 3197      		1: sbiw r30,1
+ 1431 05e6 01F4      		brne 1b
+ 1432               	 ;  0 "" 2
+ 1433               	/* #NOAPP */
+ 1434               	.LBE105:
+ 1435               	.LBE104:
+ 1436               	.LM301:
+ 1437 05e8 0197      		sbiw r24,1
+ 1438               	.LM302:
+ 1439 05ea 01F4      		brne .L113
+ 1440               	.LBE103:
+ 1441               	.LBE102:
+ 1442               	.LM303:
+ 1443 05ec 87E0      		ldi r24,lo8(7)
+ 1444               	.LVL94:
+ 1445 05ee 60E8      		ldi r22,lo8(-128)
+ 1446 05f0 00D0      		rcall spiWrite
+ 1447               	.LVL95:
+ 1448 05f2 8CED      		ldi r24,lo8(1500)
+ 1449 05f4 95E0      		ldi r25,hi8(1500)
+ 1450               	.LVL96:
+ 1451               	.LBB106:
+ 1452               	.LBB107:
+ 1453               	.LBB108:
+ 1454               	.LBB109:
+ 1455               	.LM304:
+ 1456 05f6 24E6      		ldi r18,lo8(100)
+ 1457 05f8 30E0      		ldi r19,hi8(100)
+ 1458               	.L114:
+ 1459 05fa F901      		movw r30,r18
+ 1460               	.LVL97:
+ 1461               	/* #APP */
+ 1462               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1463 05fc 3197      		1: sbiw r30,1
+ 1464 05fe 01F4      		brne 1b
+ 1465               	 ;  0 "" 2
+ 1466               	/* #NOAPP */
+ 1467               	.LBE109:
+ 1468               	.LBE108:
+ 1469               	.LM305:
+ 1470 0600 0197      		sbiw r24,1
+ 1471               	.LM306:
+ 1472 0602 01F4      		brne .L114
+ 1473               	.LBE107:
+ 1474               	.LBE106:
+ 1475               	.LM307:
+ 1476 0604 85E0      		ldi r24,lo8(5)
+ 1477               	.LVL98:
+ 1478 0606 60E0      		ldi r22,lo8(0)
+ 1479 0608 00D0      		rcall spiWrite
+ 1480               	.LVL99:
+ 1481               	.LM308:
+ 1482 060a 86E0      		ldi r24,lo8(6)
+ 1483 060c 60E0      		ldi r22,lo8(0)
+ 1484 060e 00D0      		rcall spiWrite
+ 1485               	.LM309:
+ 1486 0610 83E0      		ldi r24,lo8(3)
+ 1487 0612 00D0      		rcall spiRead
+ 1488               	.LM310:
+ 1489 0614 84E0      		ldi r24,lo8(4)
+ 1490 0616 00D0      		rcall spiRead
+ 1491               	.LM311:
+ 1492 0618 8AE5      		ldi r24,lo8(90)
+ 1493 061a 6FE7      		ldi r22,lo8(127)
+ 1494 061c 00D0      		rcall spiWrite
+ 1495               	.LM312:
+ 1496 061e 88E5      		ldi r24,lo8(88)
+ 1497 0620 60E8      		ldi r22,lo8(-128)
+ 1498 0622 00D0      		rcall spiWrite
+ 1499               	.LM313:
+ 1500 0624 89E5      		ldi r24,lo8(89)
+ 1501 0626 60E4      		ldi r22,lo8(64)
+ 1502 0628 00D0      		rcall spiWrite
+ 1503               	.LM314:
+ 1504 062a 8AE6      		ldi r24,lo8(106)
+ 1505 062c 6BE0      		ldi r22,lo8(11)
+ 1506 062e 00D0      		rcall spiWrite
+ 1507               	.LM315:
+ 1508 0630 88E6      		ldi r24,lo8(104)
+ 1509 0632 64E0      		ldi r22,lo8(4)
+ 1510 0634 00D0      		rcall spiWrite
+ 1511               	.LM316:
+ 1512 0636 8FE1      		ldi r24,lo8(31)
+ 1513 0638 63E0      		ldi r22,lo8(3)
+ 1514 063a 00D0      		rcall spiWrite
+ 1515               	.LM317:
+ 1516 063c 89E0      		ldi r24,lo8(9)
+ 1517 063e 6BE7      		ldi r22,lo8(123)
+ 1518 0640 00D0      		rcall spiWrite
+ 1519               	.LM318:
+ 1520 0642 8AE0      		ldi r24,lo8(10)
+ 1521 0644 60E0      		ldi r22,lo8(0)
+ 1522 0646 00D0      		rcall spiWrite
+ 1523               	.LM319:
+ 1524 0648 8BE0      		ldi r24,lo8(11)
+ 1525 064a 62ED      		ldi r22,lo8(-46)
+ 1526 064c 00D0      		rcall spiWrite
+ 1527               	.LM320:
+ 1528 064e 8CE0      		ldi r24,lo8(12)
+ 1529 0650 65ED      		ldi r22,lo8(-43)
+ 1530 0652 00D0      		rcall spiWrite
+ 1531               	.LM321:
+ 1532 0654 8DE0      		ldi r24,lo8(13)
+ 1533 0656 60E0      		ldi r22,lo8(0)
+ 1534 0658 00D0      		rcall spiWrite
+ 1535               	.LM322:
+ 1536 065a 8FE0      		ldi r24,lo8(15)
+ 1537 065c 60E7      		ldi r22,lo8(112)
+ 1538 065e 00D0      		rcall spiWrite
+ 1539               	.LM323:
+ 1540 0660 80E1      		ldi r24,lo8(16)
+ 1541 0662 60E0      		ldi r22,lo8(0)
+ 1542 0664 00D0      		rcall spiWrite
+ 1543               	.LM324:
+ 1544 0666 82E1      		ldi r24,lo8(18)
+ 1545 0668 60E0      		ldi r22,lo8(0)
+ 1546 066a 00D0      		rcall spiWrite
+ 1547               	.LM325:
+ 1548 066c 83E1      		ldi r24,lo8(19)
+ 1549 066e 60E0      		ldi r22,lo8(0)
+ 1550 0670 00D0      		rcall spiWrite
+ 1551               	.LM326:
+ 1552 0672 8CE1      		ldi r24,lo8(28)
+ 1553 0674 64E0      		ldi r22,lo8(4)
+ 1554 0676 00D0      		rcall spiWrite
+ 1555               	.LM327:
+ 1556 0678 8DE1      		ldi r24,lo8(29)
+ 1557 067a 60E4      		ldi r22,lo8(64)
+ 1558 067c 00D0      		rcall spiWrite
+ 1559               	.LM328:
+ 1560 067e 8EE1      		ldi r24,lo8(30)
+ 1561 0680 65E0      		ldi r22,lo8(5)
+ 1562 0682 00D0      		rcall spiWrite
+ 1563               	.LM329:
+ 1564 0684 80E2      		ldi r24,lo8(32)
+ 1565 0686 68EC      		ldi r22,lo8(-56)
+ 1566 0688 00D0      		rcall spiWrite
+ 1567               	.LM330:
+ 1568 068a 81E2      		ldi r24,lo8(33)
+ 1569 068c 60E0      		ldi r22,lo8(0)
+ 1570 068e 00D0      		rcall spiWrite
+ 1571               	.LM331:
+ 1572 0690 82E2      		ldi r24,lo8(34)
+ 1573 0692 63EA      		ldi r22,lo8(-93)
+ 1574 0694 00D0      		rcall spiWrite
+ 1575               	.LM332:
+ 1576 0696 83E2      		ldi r24,lo8(35)
+ 1577 0698 67ED      		ldi r22,lo8(-41)
+ 1578 069a 00D0      		rcall spiWrite
+ 1579               	.LM333:
+ 1580 069c 84E2      		ldi r24,lo8(36)
+ 1581 069e 60E0      		ldi r22,lo8(0)
+ 1582 06a0 00D0      		rcall spiWrite
+ 1583               	.LM334:
+ 1584 06a2 85E2      		ldi r24,lo8(37)
+ 1585 06a4 66EA      		ldi r22,lo8(-90)
+ 1586 06a6 00D0      		rcall spiWrite
+ 1587               	.LM335:
+ 1588 06a8 80E3      		ldi r24,lo8(48)
+ 1589 06aa 6EE8      		ldi r22,lo8(-114)
+ 1590 06ac 00D0      		rcall spiWrite
+ 1591               	.LM336:
+ 1592 06ae 82E3      		ldi r24,lo8(50)
+ 1593 06b0 60E0      		ldi r22,lo8(0)
+ 1594 06b2 00D0      		rcall spiWrite
+ 1595               	.LM337:
+ 1596 06b4 83E3      		ldi r24,lo8(51)
+ 1597 06b6 62E0      		ldi r22,lo8(2)
+ 1598 06b8 00D0      		rcall spiWrite
+ 1599               	.LM338:
+ 1600 06ba 84E3      		ldi r24,lo8(52)
+ 1601 06bc 60E1      		ldi r22,lo8(16)
+ 1602 06be 00D0      		rcall spiWrite
+ 1603               	.LM339:
+ 1604 06c0 85E3      		ldi r24,lo8(53)
+ 1605 06c2 60E3      		ldi r22,lo8(48)
+ 1606 06c4 00D0      		rcall spiWrite
+ 1607               	.LM340:
+ 1608 06c6 86E3      		ldi r24,lo8(54)
+ 1609 06c8 6DE2      		ldi r22,lo8(45)
+ 1610 06ca 00D0      		rcall spiWrite
+ 1611               	.LM341:
+ 1612 06cc 87E3      		ldi r24,lo8(55)
+ 1613 06ce 64ED      		ldi r22,lo8(-44)
+ 1614 06d0 00D0      		rcall spiWrite
+ 1615               	.LM342:
+ 1616 06d2 89E6      		ldi r24,lo8(105)
+ 1617 06d4 60E2      		ldi r22,lo8(32)
+ 1618 06d6 00D0      		rcall spiWrite
+ 1619               	.LM343:
+ 1620 06d8 8EE3      		ldi r24,lo8(62)
+ 1621 06da 62E0      		ldi r22,lo8(2)
+ 1622 06dc 00D0      		rcall spiWrite
+ 1623               	.LM344:
+ 1624 06de 8DE6      		ldi r24,lo8(109)
+ 1625 06e0 60E0      		ldi r22,lo8(0)
+ 1626 06e2 00D0      		rcall spiWrite
+ 1627               	.LM345:
+ 1628 06e4 80E7      		ldi r24,lo8(112)
+ 1629 06e6 60E2      		ldi r22,lo8(32)
+ 1630 06e8 00D0      		rcall spiWrite
+ 1631               	.LM346:
+ 1632 06ea 81E7      		ldi r24,lo8(113)
+ 1633 06ec 63E2      		ldi r22,lo8(35)
+ 1634 06ee 00D0      		rcall spiWrite
+ 1635               	.LM347:
+ 1636 06f0 82E7      		ldi r24,lo8(114)
+ 1637 06f2 60E4      		ldi r22,lo8(64)
+ 1638 06f4 00D0      		rcall spiWrite
+ 1639               	.LM348:
+ 1640 06f6 8EE6      		ldi r24,lo8(110)
+ 1641 06f8 63EA      		ldi r22,lo8(-93)
+ 1642 06fa 00D0      		rcall spiWrite
+ 1643               	.LM349:
+ 1644 06fc 8FE6      		ldi r24,lo8(111)
+ 1645 06fe 67ED      		ldi r22,lo8(-41)
+ 1646 0700 00D0      		rcall spiWrite
+ 1647               	.LM350:
+ 1648 0702 83E7      		ldi r24,lo8(115)
+ 1649 0704 60E0      		ldi r22,lo8(0)
+ 1650 0706 00D0      		rcall spiWrite
+ 1651               	.LM351:
+ 1652 0708 84E7      		ldi r24,lo8(116)
+ 1653 070a 60E0      		ldi r22,lo8(0)
+ 1654 070c 00D0      		rcall spiWrite
+ 1655               	.LM352:
+ 1656 070e 89E7      		ldi r24,lo8(121)
+ 1657 0710 60E0      		ldi r22,lo8(0)
+ 1658 0712 00D0      		rcall spiWrite
+ 1659               	.LM353:
+ 1660 0714 8AE7      		ldi r24,lo8(122)
+ 1661 0716 60E0      		ldi r22,lo8(0)
+ 1662 0718 00D0      		rcall spiWrite
+ 1663               	.LM354:
+ 1664 071a 85E7      		ldi r24,lo8(117)
+ 1665 071c 63E5      		ldi r22,lo8(83)
+ 1666 071e 00D0      		rcall spiWrite
+ 1667               	.LM355:
+ 1668 0720 86E7      		ldi r24,lo8(118)
+ 1669 0722 62E6      		ldi r22,lo8(98)
+ 1670 0724 00D0      		rcall spiWrite
+ 1671               	.LM356:
+ 1672 0726 87E7      		ldi r24,lo8(119)
+ 1673 0728 60E0      		ldi r22,lo8(0)
+ 1674 072a 00D0      		rcall spiWrite
+ 1675               	.LM357:
+ 1676 072c 85E0      		ldi r24,lo8(5)
+ 1677 072e 67E0      		ldi r22,lo8(7)
+ 1678 0730 00D0      		rcall spiWrite
+ 1679               	.LM358:
+ 1680 0732 88E0      		ldi r24,lo8(8)
+ 1681 0734 61E0      		ldi r22,lo8(1)
+ 1682 0736 00D0      		rcall spiWrite
+ 1683               	.LM359:
+ 1684 0738 88E0      		ldi r24,lo8(8)
+ 1685 073a 60E0      		ldi r22,lo8(0)
+ 1686 073c 00D0      		rcall spiWrite
+ 1687               	.LM360:
+ 1688 073e 88E0      		ldi r24,lo8(8)
+ 1689 0740 62E0      		ldi r22,lo8(2)
+ 1690 0742 00D0      		rcall spiWrite
+ 1691               	.LM361:
+ 1692 0744 88E0      		ldi r24,lo8(8)
+ 1693 0746 60E0      		ldi r22,lo8(0)
+ 1694 0748 00D0      		rcall spiWrite
+ 1695               	.LBE101:
+ 1696               	.LBE100:
+ 1697               	.LM362:
+ 1698               	/* #APP */
+ 1699               	 ;  642 "testtiny.c" 1
+ 1700 074a 7894      		sei
+ 1701               	 ;  0 "" 2
+ 1702               	/* #NOAPP */
+ 1703               	.L115:
+ 1704               	.LM363:
+ 1705 074c 00D0      		rcall usartFillbuffer
+ 1706               	.LM364:
+ 1707 074e 80E0      		ldi r24,lo8(scratch)
+ 1708 0750 90E0      		ldi r25,hi8(scratch)
+ 1709 0752 00D0      		rcall parseBuffer
+ 1710 0754 00C0      		rjmp .L115
+ 1711               	.LFE22:
+ 1713               		.comm scratch,12,1
+ 1714               		.comm flag,1,1
+ 1835               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 testtiny.c
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:18     .text:00000000 usartHEXmyoutput
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:80     .text:00000032 usartPutchar
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:99     .text:0000003a usartPutCRLF
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:125    .text:0000004c usartSendstring
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:157    .text:00000066 getDIPvalue
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:197    .text:00000080 spiWrite
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:240    .text:000000a4 spiRead
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:285    .text:000000ca usartSendDump
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:361    .text:00000108 usartFillbuffer
+                            *COM*:0000000c scratch
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:436    .text:00000146 setParam
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:865    .text:0000037a parseBuffer
+                            *COM*:00000001 flag
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:1212   .text:00000506 __vector_1
+C:\DOCUME~1\Arian\LOCALS~1\Temp/ccnmVOSn.s:1361   .text:000005ae main
+
+UNDEFINED SYMBOLS
+__do_clear_bss

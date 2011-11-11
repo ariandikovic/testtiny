@@ -1,0 +1,1 @@
+testtiny.o: testtiny.c
